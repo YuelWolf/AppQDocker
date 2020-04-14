@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  server:
+    build: 
+      context: satyriumAPI
+      dockerfile: dockerfile
+    command: "npx nodemon"
+    environment:
+      MONGO_URL: "mongodb://db:27017/satyrium"
+    depends_on:
+      - db
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./satyriumAPI:/usr/src
+      - ./satyriumAPI/node_modules:/usr/src/node_modules
+    networks:
+      - backend
+
+  db:
+    image: mongo
+    volumes:
+      - mongodata:/data/db
+    networks:
+      - backend
+    ports:
+      - 27017:27017
+
+volumes:
+  mongodata:
+
+networks:
+  backend:
