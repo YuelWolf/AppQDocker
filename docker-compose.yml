@@ -3,18 +3,18 @@ version: "3"
 services:
   server:
     build: 
-      context: satyriumAPI
+      context: AppQAPI
       dockerfile: dockerfile
     command: "npx nodemon"
     environment:
-      MONGO_URL: "mongodb://db:27017/satyrium"
+      MONGO_URL: "mongodb://db:27017/appqdb"
     depends_on:
       - db
     ports:
       - "4000:4000"
     volumes:
-      - ./satyriumAPI:/usr/src
-      - ./satyriumAPI/node_modules:/usr/src/node_modules
+      - ./AppQAPI:/usr/src
+      - ./AppQAPI/node_modules:/usr/src/node_modules
     networks:
       - backend
 
