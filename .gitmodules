@@ -1,3 +1,6 @@
 [submodule "Satyrium_API"]
 	path = Satyrium_API
 	url = git@github.com:YuelWolf/Satyrium_API.git
+[submodule "AppQScrapper"]
+	path = AppQScrapper
+	url = git@github.com:YuelWolf/AppQScrapper.git

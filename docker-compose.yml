@@ -8,6 +8,7 @@ services:
     command: "npx nodemon"
     environment:
       MONGO_URL: "mongodb://db:27017/appqdb"
+      JWT_SECRET: "somesecrettoken"
     depends_on:
       - db
     ports:
@@ -15,6 +16,24 @@ services:
     volumes:
       - ./AppQAPI:/usr/src
       - ./AppQAPI/node_modules:/usr/src/node_modules
+    networks:
+      - backend
+  
+  scrapper:
+    build: 
+      context: AppQScrapper
+      dockerfile: dockerfile
+    command: "npm start"
+    environment:
+      MONGO_URL: "mongodb://db:27017/appqdb"
+      JWT_SECRET: "somesecrettoken"
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./AppQScrapper:/usr/src
+      - ./AppQScrapper/node_modules:/usr/src/node_modules
     networks:
       - backend
 
