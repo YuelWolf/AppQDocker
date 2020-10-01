@@ -3,7 +3,7 @@ version: "3"
 services:
   server:
     build: 
-      context: AppQAPI
+      context: AppqAPI
       dockerfile: dockerfile
     command: "npx nodemon"
     environment:
@@ -14,8 +14,8 @@ services:
     ports:
       - "4000:4000"
     volumes:
-      - ./AppQAPI:/usr/src
-      - ./AppQAPI/node_modules:/usr/src/node_modules
+      - ./AppqAPI:/usr/src
+      - ./AppqAPI/node_modules:/usr/src/node_modules
     networks:
       - backend
   
